@@ -304,6 +304,7 @@ export default class NcProjectBuilder {
         break;
 
       case 'tableXcHooksSet':
+      case 'tableXcHooksDelete':
         await curBuilder.onHooksUpdate(data.req.args.tn);
         console.log(`Updated validations for table : ${data.req.args.tn}`);
         break;
@@ -695,7 +696,7 @@ export default class NcProjectBuilder {
       for (const connectionConfig of dbs) {
         try {
           const sqlClient = NcConnectionMgr.getSqlClient({
-            dbAlias: connectionConfig?.mets?.dbAlias,
+            dbAlias: connectionConfig?.meta?.dbAlias,
             env: this.config.env,
             config: this.config,
             projectId: this.id
@@ -891,7 +892,7 @@ export default class NcProjectBuilder {
 
     for (const connectionConfig of dbs) {
       NcConnectionMgr.delete({
-        dbAlias: connectionConfig?.mets?.dbAlias,
+        dbAlias: connectionConfig?.meta?.dbAlias,
         env: this.config.env,
         projectId: this.id
       });

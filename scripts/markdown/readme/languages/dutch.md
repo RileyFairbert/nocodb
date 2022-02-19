@@ -127,7 +127,7 @@ Toegang tot dashboard met behulp van : [http://localhost:8080/dashboard](http://
 ### Rich Spreadsheet Interface
 
 - ⚡ Zoeken, sorteren, filteren, kolommen verbergen met uber gemak
-- ⚡ Weergaven creëren: Grid, Gallery, Kanban, Gantt, Form
+- ⚡ Weergaven creëren: Grid, Gallery, Kanban, Form
 - ⚡ Delen Bekeken: Publiek en wachtwoord beveiligd
 - ⚡ Persoonlijke en vergrendelde meningen
 - ⚡ Upload afbeeldingen naar cellen (werkt met S3, Minio, GCP, Azure, Digitalocean, Linode, Ovh, Backblaze) !!
@@ -189,7 +189,7 @@ git clone https://github.com/nocodb/nocodb
 cd nocodb
 cd docker-compose
 cd mysql or pg or mssql
-docker-compose up
+docker-compose up -d
 ```
 
 ## Environment variables

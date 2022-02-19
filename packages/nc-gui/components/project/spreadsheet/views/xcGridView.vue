@@ -237,14 +237,16 @@
             />
           </td>
         </tr>
-        <tr v-if="isPkAvail && !isLocked && !isPublicView && isEditable && relationType !== 'bt'">
+        <tr v-if="!isLocked && !isPublicView && isEditable && relationType !== 'bt'">
           <td :colspan="visibleColLength + 1" class="text-left pointer nc-grid-add-new-cell" @click="insertNewRow(true)">
             <v-tooltip top>
               <template #activator="{on}">
                 <v-icon small color="pink" v-on="on">
                   mdi-plus
                 </v-icon>
-                <span class="ml-1 caption grey--text ">New Row</span>
+                <span class="ml-1 caption grey--text ">
+                  {{ $t('activity.addRow') }}
+                </span>
               </template>
               <span class="caption"> Add new row</span>
             </v-tooltip>

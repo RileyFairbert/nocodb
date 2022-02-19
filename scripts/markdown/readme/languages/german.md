@@ -129,7 +129,7 @@ Zugriff auf Dashboard mit. : [http://localhost:8080/dashboard](http://localhost:
 ### Rich-Tabellenschnittstelle
 
 - ⚡ Suchen, sortieren, filtern, Spalten mit Uber-Leichtigkeit ausblenden
-- ⚡ Ansichten erstellen: Gitter, Galerie, Kanban, Gantt, Form
+- ⚡ Ansichten erstellen: Gitter, Galerie, Kanban, Form
 - ⚡ Teilen von Ansichten: Öffentliche und Passwort geschützt
 - ⚡ Persönliche und gesperrte Ansichten
 - ⚡ Laden Sie Bilder in Zellen hoch (funktioniert mit S3, Minio, GCP, Azure, Digitalocean, Linode, OVH, Backraze) !!
@@ -191,7 +191,7 @@ git clone https://github.com/nocodb/nocodb
 cd nocodb
 cd docker-compose
 cd mysql or pg or mssql
-docker-compose up
+docker-compose up -d
 ```
 
 ## Umgebungsvariablen

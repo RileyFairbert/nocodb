@@ -130,7 +130,7 @@ Accedi al Pannello di Controllo visitando: [http://localhost:8080/dashboard](htt
 ### Interfaccia a foglio di calcolo
 
 - ⚡ Ricerca, ordina, filtra, nascondi le colonne con super facilità
-- ⚡ Crea Views: Griglie, Gallerie, Kanban, Gantt, Form
+- ⚡ Crea Views: Griglie, Gallerie, Kanban, Form
 - ⚡ Condividi Views: Pubbliche o protette da password
 - ⚡ Views personali o bloccate
 - ⚡ Carica immagini nelle celle (funziona con S3, Minio, GCP, Azure, Digitalocean, Linode, OVH, BackBlaze) !!
@@ -192,7 +192,7 @@ git clone https://github.com/nocodb/nocodb
 cd nocodb
 cd docker-compose
 cd mysql or pg or mssql
-docker-compose up
+docker-compose up -d
 ```
 
 ## Variabili d'ambiente

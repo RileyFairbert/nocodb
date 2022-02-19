@@ -34,7 +34,8 @@
               mdi-download-outline
             </v-icon>
             <span class="caption">
-              Download as CSV
+              <!-- Download as CSV -->
+              {{ $t('activity.downloadCSV') }}
             </span>
           </v-list-item-title>
         </v-list-item>
@@ -48,7 +49,8 @@
               mdi-upload-outline
             </v-icon>
             <span class="caption ">
-              Upload CSV
+              <!-- Upload CSV -->
+              {{ $t('activity.uploadCSV') }}
             </span>
 
             <span class="caption grey--text">(<x-icon small color="grey lighten-2">
@@ -66,7 +68,8 @@
               mdi-view-list-outline
             </v-icon>
             <span class="caption ">
-              Shared View List
+              <!-- Shared View List -->
+              {{ $t('activity.listSharedView') }}
             </span>
           </v-list-item-title>
         </v-list-item>  <v-list-item
@@ -103,6 +106,7 @@ import FileSaver from 'file-saver'
 import DropOrSelectFileModal from '~/components/import/dropOrSelectFileModal'
 import ColumnMappingModal from '~/components/project/spreadsheet/components/importExport/columnMappingModal'
 import CSVTemplateAdapter from '~/components/import/templateParsers/CSVTemplateAdapter'
+import { UITypes } from '~/components/project/spreadsheet/helpers/uiTypes'
 
 export default {
   name: 'ExportImport',
@@ -273,9 +277,19 @@ export default {
         for (let i = 0, progress = 0; i < data.length; i += 500) {
           const batchData = data.slice(i, i + 500).map(row => columnMappings.reduce((res, col) => {
             // todo: parse data
-
             if (col.enabled && col.destCn) {
-              res[col.destCn] = row[col.sourceCn]
+              const v = this.meta && this.meta.columns.find(c => c._cn === col.destCn)
+              var input = row[col.sourceCn]
+              // parse potential boolean values 
+              if (v.uidt == UITypes.Checkbox) {
+                input = input.replace(/["']/g, "").toLowerCase().trim()
+                if (input == "false" || input == "no" || input == "n") {
+                  input = "0"
+                } else if (input == "true" || input == "yes" || input == "y") {
+                  input = "1"
+                }
+              }
+              res[col.destCn] = input
             }
             return res
           }, {}))
@@ -286,6 +300,7 @@ export default {
         }
         this.columnMappingModal = false
         this.$store.commit('loader/MutClear')
+        this.$emit('reload')
         this.$toast.success('Successfully imported table data').goAway(3000)
       } catch (e) {
         this.$toast.error(e.message).goAway(3000)
